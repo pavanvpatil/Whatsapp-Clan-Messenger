@@ -1,5 +1,13 @@
 ![3](https://user-images.githubusercontent.com/76431379/156902325-e44c0e9f-3c04-4731-acb9-f92304e02606.png) 
 
+<p align="center">
+  <img 
+    width="300"
+    height="300"
+    src="https://user-images.githubusercontent.com/76431379/156902325-e44c0e9f-3c04-4731-acb9-f92304e02606.png"
+  >
+</p>
+
 ## Devhack - Automation is the best, Forget the rest!
 
 # Abstract 
