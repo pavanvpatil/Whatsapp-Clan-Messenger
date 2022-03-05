@@ -117,7 +117,7 @@ for i in range(len(phone)):
     print(x)
     pyautogui.write(x)
     pyautogui.press("enter")
-    time.sleep(5)
+    time.sleep(6)
     
     hover = False
 
@@ -179,8 +179,12 @@ for i in range(len(phone)):
     pyautogui.click()
     time.sleep(0.5)
     # pyautogui.write("hi bro")
-    for i in msg:
-        pyautogui.write(i[:-1])
+    line = 0 
+    for j in msg:
+        if(line not in lineno):
+            pyautogui.write(j[:-1])
+        else:
+            pyautogui.write(j[:-1].replace("__Name__",str(Names[i])))
         with pyautogui.hold('shift'):
             pyautogui.press('enter')
         time.sleep(0.5)
