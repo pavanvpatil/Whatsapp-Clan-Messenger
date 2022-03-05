@@ -4,27 +4,99 @@ import time
 import lackey
 import pandas as pd
 
-# name = input("name of csv file :")
-message = input("name of message txt file :")
+from tkinter import *
+from tkinter.ttk import *
+from tkinter import messagebox
 
-# csv_data = pd.read_csv(name)
+from tkinter.filedialog import askopenfile
+import pandas as pd 
+root = Tk()
+root.geometry('300x400')
 
-# csv_data = csv_data.to_numpy()
-# print(csv_data)
-# phone = list(csv_data[:,2])
+def sel():
+   global selection
+   selection = str(var.get())
+   if(selection == "1"):
+       btn = Button(root, text ='Upload .csv file containing phone numbers with names', command = lambda:open_file_phone_numbers())
+       btn.pack(side = TOP, pady = 10)
+   elif(selection == "2"):
+        btn = Button(root, text ='Upload .csv file containing phone numbers', command = lambda:open_file_phone_numbers())
+        btn.pack(side = TOP, pady = 10)
+        
 
-# print(phone)
+def open_file_phone_numbers():
+    global csv_data
+    file = askopenfile(mode ='r', filetypes =[('Python Files', '*.csv')])
+    if file is not None:
+        csv_data = pd.read_csv(file)
+  
+def open_file_message():
+    global msg
+    file = askopenfile(mode ='r', filetypes =[('Python Files', '*.txt')])
+    if file is not None:
+        msg = file.readlines()
 
-with open(message, 'r') as file:
-    msg = file.readlines()
+        
+
+def disable_button():
+    root.destroy()
+
+
+var = IntVar()
+R1 = Radiobutton(root, text="Does your csv file contain name in first coloumn", variable=var, value=1,
+                  command=sel)
+R1.pack( anchor = W )
+
+R2 = Radiobutton(root, text="Excluding names", variable=var, value=2,
+                  command=sel)
+R2.pack( anchor = W )
+Button(root, text= "Quit", command= disable_button, width= 20).pack(pady=20)
+
+label = Label(root)
+label.pack()
+print(R1)
+
+btn = Button(root, text ='Upload .txt file containing messages', command = lambda:open_file_message())
+btn.pack(side = TOP, pady = 10)
+
+print()
+root.mainloop()
+if selection == '1':
+    if 'Name' in list(csv_data.columns.values) :
+        Names = list(csv_data['Name'])
+    elif 'name' in list(csv_data.columns.values):
+        Names = list(csv_data['Name'])
+    else:
+        messagebox.showerror("Error","The input csv file does not have a Name coloumn")
+
+if 'Phone' in list(csv_data.columns.values):
+    phone = list(csv_data['Phone'])
+elif 'phone' in list(csv_data.columns.values):
+    phone = list(csv_data['phone'])
+else:
+    messagebox.showerror("Error","The input csv file does not have a Phone coloumn")
+
+
+lineno= []
+x =0
+for i in msg:
+    if (i.find("__Name__") != -1):
+        lineno.append(x)
+    x +=1
+
+print(msg)
+print(phone)
+print(lineno)
+
+
 
 
 size = pyautogui.size()
 if(size[0] > 40 and size[1] > 40):
     pyautogui.moveTo(20,20)
 
-# phone = ["917539996785","919823290363"]
-phone = ["917539996785","919823290363","919740776505","918660925038"]
+
+
 url = "https://web.whatsapp.com/send?phone="
 
 wb.open('https://www.google.co.in/')
@@ -41,7 +113,8 @@ for i in range(len(phone)):
     with pyautogui.hold('ctrl'):
         pyautogui.press('l') 
     pyautogui.press("backspace")
-    x = url + phone[i]
+    x = url +"91"+ str(phone[i])
+    print(x)
     pyautogui.write(x)
     pyautogui.press("enter")
     time.sleep(5)
