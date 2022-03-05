@@ -72,6 +72,12 @@ else:
     messagebox.showerror("Error","The input csv file does not have a Phone coloumn")
 
 
+lineno= []
+x =0
+for i in msg:
+    if (i.find("__Name__") != -1):
+        lineno.append(x)
+    x +=1
 
     
-    
+print(lineno)
