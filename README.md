@@ -5,7 +5,7 @@ With technological boost all around, automation is the need of the hour to perfo
 
 # How to run the code : 
 
-1. Download the executable file from the github repo
+1. Download the executable file from the github repo.
 2. Make sure your default browser is Google Chrome and whatsapp web has been logged on to atleast once with "Stay signed in" checked.
 3. Double-click on the .exe file 
 4. Give two inputs : 
