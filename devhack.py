@@ -143,7 +143,7 @@ for i in range(len(phone)):
         #     type_box = pyautogui.position()
 
     elif(hover == False):
-        print("\n\n\n\n\n\nF\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n\n\n\n\n")
         if(lackey.exists("target1.jpg")):
             lackey.hover("target1.jpg")
             type_box = pyautogui.position()
