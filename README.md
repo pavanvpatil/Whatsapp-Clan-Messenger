@@ -21,3 +21,6 @@ With technological boost all around, automation is the need of the hour to perfo
    2. A.txt file containing the message to be sent.
    3. clear image of Whatsapp's text box
 5. Sit back and observe the bot sending messages in bulk to all the required phone numbers.
+
+## YouTube video link : https://youtu.be/WdkfMGhCcA0
+## Drive link : https://drive.google.com/file/d/1yrmq6w1l-dscZijwbTL-sSAQZ4l8XXP4/view?usp=sharing
