@@ -3,7 +3,7 @@ import webbrowser as wb
 import time
 import lackey
 import pandas as pd
-
+import sys
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import messagebox
@@ -12,6 +12,13 @@ from tkinter.filedialog import askopenfile
 import pandas as pd 
 root = Tk()
 root.geometry('300x400')
+imagePath = ""
+def open_file():
+    global imagePath
+    file_path = askopenfile(mode='r', filetypes=[('Image Files', '*g')])
+    imagePath =  file_path.name[:]
+    if file_path is not None:
+        pass
 
 def sel():
    global selection
@@ -50,16 +57,20 @@ R1.pack( anchor = W )
 R2 = Radiobutton(root, text="Excluding names", variable=var, value=2,
                   command=sel)
 R2.pack( anchor = W )
-Button(root, text= "Quit", command= disable_button, width= 20).pack(pady=20)
+
 
 label = Label(root)
 label.pack()
-print(R1)
+
 
 btn = Button(root, text ='Upload .txt file containing messages', command = lambda:open_file_message())
 btn.pack(side = TOP, pady = 10)
 
-print()
+btn = Button(root, text ='Upload .jpg', command = lambda:open_file())
+btn.pack(side = TOP, pady = 10)
+
+Button(root, text= "RUN", command= disable_button, width= 20).pack(pady=20)
+
 root.mainloop()
 if selection == '1':
     if 'Name' in list(csv_data.columns.values) :
@@ -84,16 +95,14 @@ for i in msg:
         lineno.append(x)
     x +=1
 
-print(msg)
-print(phone)
-print(lineno)
-
 
 
 
 size = pyautogui.size()
 if(size[0] > 40 and size[1] > 40):
-    pyautogui.moveTo(20,20)
+    pyautogui.moveTo(30,30)
+
+initial = pyautogui.position()
 
 
 
@@ -107,7 +116,7 @@ search_symbol = []
 type_box = []
 search_symbol_better = []
 
-
+count = 1
 for i in range(len(phone)):
 
     with pyautogui.hold('ctrl'):
@@ -117,68 +126,32 @@ for i in range(len(phone)):
     print(x)
     pyautogui.write(x)
     pyautogui.press("enter")
-    time.sleep(6)
+    time.sleep(8)
     
     hover = False
 
-    if(search_symbol != []):
-        pyautogui.moveTo(search_symbol[0],search_symbol[1])
-        time.sleep(2)
-        pyautogui.scroll(-1000)
-        time.sleep(0.5)
-
-
     if(type_box != [] ):
-        print("i am using\n\n\n\n")
-        print(type_box)
         pyautogui.moveTo(type_box[0],type_box[1])
         hover = True
-        # lackey.newRegion(type_box,400,100)
-        # if(lackey.exists("target1.jpg")):
-        #     print("hi1")
-        #     lackey.hover("target1.jpg")
-        #     type_box = pyautogui.position()
-        # elif(lackey.exists("targetd1.jpg")):
-        #     lackey.hover("targetd1.jpg")
-        #     type_box = pyautogui.position()
 
     elif(hover == False):
-        print("\n\n\n\n\n\n\n\n\n\n\n")
-        if(lackey.exists("target1.jpg")):
-            lackey.hover("target1.jpg")
-            type_box = pyautogui.position()
-        elif(lackey.exists("targetd1.jpg")):
-            print(x)
-            lackey.hover("targetd1.jpg")
-            type_box = pyautogui.position()
-        else:
 
-            if(lackey.exists("search.jpg")):
-                lackey.hover("search.jpg")
-                search_symbol = type_box = pyautogui.position()
-            elif(lackey.exists("searchd.jpg")):
-                lackey.hover("searchd.jpg")
-                search_symbol = type_box = pyautogui.position()
-            
-            pyautogui.scroll(-1000)
+        lackey.hover(imagePath)
+        type_box = pyautogui.position()
+        hover = True
 
-            if(lackey.exists("target1.jpg")):
-                lackey.hover("target1.jpg")
-                type_box = pyautogui.position()
-            elif(lackey.exists("targetd1.jpg")):
-                lackey.hover("targetd1.jpg")
-                type_box = pyautogui.position()
-            elif(lackey.exists("targetd.jpg")):
-                lackey.hover("targetd.jpg")
-                type_box = pyautogui.position()
-            elif(lackey.exists("target.jpg")):
-                lackey.hover("target.jpg")
-                type_box = pyautogui.position()
+    final = pyautogui.position()
     
+    if(count == 1 and initial[0] == final[0] and initial[1] == final[1]):
+        messagebox.showerror("Error","UPLOAD WHATSAPP'S TEXT BOX IMAGE")
+        sys.exit(0)
+        count +=1
+        
+
     
     pyautogui.click()
     time.sleep(0.5)
-    # pyautogui.write("hi bro")
+
     line = 0 
     for j in msg:
         if(line not in lineno):
@@ -190,7 +163,6 @@ for i in range(len(phone)):
         time.sleep(0.5)
     time.sleep(0.5)
     pyautogui.press("enter")
-    print("\n\n\n\n\n\n\n\n\n\n")
     time.sleep(1)
     
 
