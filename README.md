@@ -13,14 +13,10 @@ With technological boost all around, automation is the need of the hour to perfo
 
 ## How to run the code : 
 
-1. Download the executable file from google drive.
-2. Make sure your default browser is Google Chrome and it is in full screen mode and whatsapp web has been logged on to atleast once with "Stay signed in" checked.
+1. Download the executable file from the github repo.
+2. Make sure your default browser is Google Chrome and whatsapp web has been logged on to atleast once with "Stay signed in" checked.
 3. Double-click on the .exe file 
-4. Give three inputs : 
+4. Give two inputs : 
    1. A .csv file containing column of phone numbers to whom the whatsapp message is to be sent. 
    2. A.txt file containing the message to be sent.
-   3. clear image of Whatsapp's text box
 5. Sit back and observe the bot sending messages in bulk to all the required phone numbers.
-
-## YouTube video link : https://youtu.be/WdkfMGhCcA0
-## Drive link : https://drive.google.com/file/d/1yrmq6w1l-dscZijwbTL-sSAQZ4l8XXP4/view?usp=sharing
