@@ -20,3 +20,5 @@ With technological boost all around, automation is the need of the hour to perfo
    1. A .csv file containing column of phone numbers to whom the whatsapp message is to be sent. 
    2. A.txt file containing the message to be sent.
 5. Sit back and observe the bot sending messages in bulk to all the required phone numbers.
+
+Link for downloading downloading .exe for running in any desktop without python: [Clan_Messenger](https://drive.google.com/drive/folders/1G8lvA6gXdfsSppSGlh6-Kak_MqwQBHXO?usp=sharing) 
